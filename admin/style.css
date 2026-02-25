@@ -1,0 +1,239 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Sidebar principale */
+.sidebar {
+    width: 240px;
+    height: 100vh;
+    background-color: #1f2937;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+/* Partie haute */
+.sidebar-top {
+    padding: 20px;
+    text-align: center;
+}
+
+.avatar img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+}
+
+/* Menu */
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.menu li a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.menu li a:hover {
+    background-color: #374151;
+}
+.sidebar-bottom {
+    padding: 20px;
+    text-align: center;
+    background-color: #111827;
+    font-weight: bold;
+}
+.admin-name {
+    margin-bottom: 10px;
+}
+
+.logout-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #ef4444;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #dc2626;
+}
+
+.content {
+    margin-left: 240px;
+    padding: 20px;
+}
+
+.table-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.table-header h2 {
+    margin: 0;
+}
+
+.btn-add {
+    background-color: #10b981;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.btn-add:hover {
+    background-color: #059669;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.data-table th {
+    background-color: #f3f4f6;
+}
+
+.actions a {
+    margin-right: 8px;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.btn-edit {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.btn-delete {
+    background-color: #ef4444;
+    color: white;
+}
+
+.form-container {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    max-width: 500px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-save {
+    background: #10b981;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    background: #ef4444;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.search-bar {
+    margin-left:240px ;
+    margin-bottom: 15px;
+}
+
+.search-bar input {
+    padding: 8px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-bar button {
+    padding: 8px 12px;
+    background: #3b82f6;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pagination {
+    margin-left: 240px;
+    margin-top: 20px;
+}
+
+.pagination a {
+    padding: 6px 10px;
+    margin-right: 5px;
+    background: #e5e7eb;
+    text-decoration: none;
+    border-radius: 4px;
+    color: black;
+}
+
+.pagination a.active {
+    background: #3b82f6;
+    color: white;
+}

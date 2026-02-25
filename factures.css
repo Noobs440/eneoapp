@@ -1,0 +1,32 @@
+.facture-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-family: Arial, sans-serif;
+}
+
+.facture-table th {
+    background-color: #e8e9eb;
+    color: rgb(155, 151, 151);
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid rgb(104, 102, 102);
+}
+
+.facture-table td {
+    padding: 10px;
+    text-align: center;
+}
+
+.payer {
+    background-color: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.payer:hover {
+    background-color: #1e7e34;
+}
