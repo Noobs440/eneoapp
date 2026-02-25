@@ -1,6 +1,34 @@
 <?php
 session_start();
-$adminName = $_SESSION['admin_name'] ?? 'Administrateur';
+
+// Prevent caching so that browser 'back' won't show protected pages after logout
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+header("Expires: 0");
+
+// Require that the user is logged in and has admin role
+if (!isset($_SESSION['user_id']) || !isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header("Location: ../login.php");
+    exit;
+}
+
+// Try to get a friendly name for the admin from the database if available
+$adminName = 'Administrateur';
+$dbPath = __DIR__ . '/../db.php';
+if (file_exists($dbPath)) {
+    require_once $dbPath;
+    try {
+        $stmt = $pdo->prepare('SELECT numero_telephone FROM user WHERE id = ?');
+        $stmt->execute([$_SESSION['user_id']]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($row && !empty($row['numero_telephone'])) {
+            $adminName = $row['numero_telephone'];
+        }
+    } catch (Exception $e) {
+        // If DB read fails, keep default admin name
+    }
+}
 ?>
 
 <div class="sidebar">
