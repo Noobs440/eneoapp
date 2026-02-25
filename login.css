@@ -77,3 +77,14 @@ body{
 .login-container .forgot a:hover{
     text-decoration: underline;
 }
+
+/* Error message */
+.error-message{
+    background-color: #ffe6e6;
+    color: #b30000;
+    border: 1px solid #ffb3b3;
+    padding: 10px 12px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    font-size: 18px;
+}

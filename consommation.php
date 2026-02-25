@@ -6,8 +6,6 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit;
 }
-
-// Récupérer les consommations de l'utilisateur
 $sql = "
     SELECT c.mois, c.conso
     FROM consommation c
