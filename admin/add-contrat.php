@@ -9,7 +9,8 @@ $fields = [
         "label" => "N° de contrat",
         "type" => "text",
         "readonly" => true,
-        "required" => false
+        "required" => false,
+        "placeholder"=>"ce numero est généré automatiquement"
     ],
     "nom_abonne" => [
         "label" => "Nom de l'abonné",

@@ -34,13 +34,29 @@
                                 Supprimer
                             </a>
 
-                            <?php if (!empty($showCreateFacture)): ?>
+                            <?php
+                            $canCreateFacture = false;
+                            if (!empty($showCreateFacture) && isset($row['num_contrat']) && isset($row['mois'])) {
+                                $key = $row['num_contrat'] . '|' . $row['mois'];
+                                if (empty($factureLinked[$key])) {
+                                    $canCreateFacture = true;
+                                }
+                            }
+                            ?>
+                            <?php if ($canCreateFacture): ?>
                             <a href="add-facture.php?
                                 num_contrat=<?php echo urlencode($row['num_contrat']); ?>&
                                 mois=<?php echo urlencode($row['mois']); ?>&
                                 conso=<?php echo urlencode($row['conso']); ?>"
                                 class="btn-add">
                                 Créer facture
+                            </a>
+                            <?php endif; ?>
+
+                            <?php if (!empty($showCreateUser) && empty($userLinked[$row[$primaryKey]])): ?>
+                            <a href="add-user.php?num_contrat=<?php echo urlencode($row['num_contrat']); ?>"
+                                class="btn-add">
+                                Créer un utilisateur
                             </a>
                             <?php endif; ?>
 

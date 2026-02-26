@@ -48,6 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <html>
 <head>
+    <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="motdepasse.css">
 </head>
 <body>

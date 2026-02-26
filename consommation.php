@@ -31,6 +31,7 @@ foreach ($data as $row) {
 
 <html>
 <head>
+    <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="consommation.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>

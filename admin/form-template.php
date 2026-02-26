@@ -2,10 +2,14 @@
     <div class="form-container">
         <h2><?php echo $title; ?></h2>
 
+        <?php if (!empty($form_error)): ?>
+            <div class="error-message"><?php echo htmlspecialchars($form_error); ?></div>
+        <?php endif; ?>
+
         <form action="<?php echo $action; ?>" method="post">
 
-            <?php if (!empty($id)): ?>
-                <input type="hidden" name="id" value="<?php echo $id; ?>">
+            <?php if (!empty($id) && !empty($primary_key)): ?>
+                <input type="hidden" name="<?php echo htmlspecialchars($primary_key); ?>" value="<?php echo htmlspecialchars($id); ?>">
             <?php endif; ?>
 
             <?php foreach ($fields as $name => $field): ?>
@@ -31,11 +35,15 @@
                         type="<?php echo $field['type']; ?>" 
                         name="<?php echo $name; ?>" 
                         value="<?php echo htmlspecialchars($value); ?>"
-                        required
+                        <?php echo (!isset($field['disabled']) || !$field['disabled']) && (!isset($field['required']) || $field['required'] !== false) ? 'required' : ''; ?>
                         <?php
                         foreach ($field as $attr => $attrValue) {
-                            if (!in_array($attr, ['label', 'type', 'options'])) {
-                                echo $attr . '="' . $attrValue . '" ';
+                            if (!in_array($attr, ['label', 'type', 'options', 'required'])) {
+                                if ($attrValue === true) {
+                                    echo $attr . ' ';
+                                } elseif ($attrValue !== false) {
+                                    echo $attr . '="' . $attrValue . '" ';
+                                }
                             }
                         }
                         ?>

@@ -1,11 +1,11 @@
 <?php
 $title = "Ajouter une facture";
-$action = "save-facture.php";
+$action = "save-facture-new.php";
 $cancelLink = "factures.php";
 $numContrat   = $_GET['num_contrat'] ?? '';
 $mois         = $_GET['mois'] ?? '';
 $conso = $_GET['conso'] ?? '';
-
+$primary_key = 'num_facture';
 $id = null;
 
 $fields = [
@@ -13,8 +13,8 @@ $fields = [
         "label" => "N° de facture",
         "type" => "text",
         "readonly" => true,
-        "required" => false
-
+        "required" => false,
+        "disabled" => true
     ],
     "num_contrat" => [
         "label" => "N° de contrat",

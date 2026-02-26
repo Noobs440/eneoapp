@@ -6,8 +6,9 @@ if (!isset($_GET['num_facture'])) {
 }
 
 $num_facture = $_GET['num_facture'];
+$primary_key = 'num_facture';
 
-$sql = "SELECT * FROM facture WHERE num_facture = :num_facture";
+$sql = "SELECT * FROM factures WHERE num_facture = :num_facture";
 $stmt = $pdo->prepare($sql);
 $stmt->execute(['num_facture' => $num_facture]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -15,6 +16,8 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 if (!$user) {
     die("Facture introuvable");
 }
+
+$id = $user['num_facture'];
 
 $title = "Modifier une facture";
 $action = "save-facture.php";

@@ -4,6 +4,7 @@ require '../db.php';
 
 try {
     $num_facture = trim($_POST['num_facture'] ?? '');
+    $num_facture = ($num_facture === '' || $num_facture === '0') ? '' : $num_facture;
     $num_contrat = trim($_POST['num_contrat'] ?? '');
     $mois        = trim($_POST['mois'] ?? '');
     $consommation = floatval($_POST['consommation'] ?? 0);
@@ -27,21 +28,17 @@ try {
 
     } else {
         // ===== INSERT avec transaction =====
+        // NOTE: The trigger before_insert_facture will auto-generate num_facture
+        // So we send NULL and let the trigger handle it
         $pdo->beginTransaction();
 
         try {
-            $result = $pdo->query(
-                "SELECT MAX(CAST(SUBSTRING(num_facture, 5) AS UNSIGNED)) as maxnum 
-                 FROM factures FOR UPDATE"
-            );
-            $row     = $result->fetch(PDO::FETCH_ASSOC);
-            $nextNum = ($row['maxnum'] ?? 0) + 1;
-            $newNum  = 'FAC-' . str_pad($nextNum, 4, '0', STR_PAD_LEFT);
+            error_log("DEBUG - Inserting new invoice, letting trigger generate ID");
 
             $sql = "INSERT INTO factures (num_facture, num_contrat, mois, consommation, montant, statut, date_limite)
-                    VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    VALUES (NULL, ?, ?, ?, ?, ?, ?)";
             $pdo->prepare($sql)->execute([
-                $newNum, $num_contrat, $mois, $consommation, $montant, $statut, $date_limite
+                $num_contrat, $mois, $consommation, $montant, $statut, $date_limite
             ]);
 
             $pdo->commit();

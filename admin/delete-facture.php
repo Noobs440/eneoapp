@@ -1,7 +1,7 @@
 <?php
 include '../db.php';
 
-$table = "facture";
+$table = "factures";
 $id = $_GET['num_facture'];
 
 $sql = "DELETE FROM $table WHERE num_facture = :id";

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../db.php';
 
 $table = "consommation";
@@ -6,6 +7,30 @@ $table = "consommation";
 $data = $_POST;
 $id = $data['id'] ?? null;
 unset($data['id']);
+
+// Validate that provided num_contrat exists in contrat table
+$numContrat = $data['num_contrat'] ?? null;
+if (empty($numContrat)) {
+    $_SESSION['consommation_error'] = 'N° de contrat requis.';
+    if ($id) {
+        header('Location: edit-consommation.php?id=' . urlencode($id));
+    } else {
+        header('Location: add-consommation.php?num_contrat=' . urlencode($numContrat));
+    }
+    exit();
+}
+
+$stmtChk = $pdo->prepare('SELECT 1 FROM contrat WHERE num_contrat = ?');
+$stmtChk->execute([$numContrat]);
+if ($stmtChk->rowCount() === 0) {
+    $_SESSION['consommation_error'] = "Le numéro de contrat n'existe pas.";
+    if ($id) {
+        header('Location: edit-consommation.php?id=' . urlencode($id));
+    } else {
+        header('Location: add-consommation.php?num_contrat=' . urlencode($numContrat));
+    }
+    exit();
+}
 
 if ($id) {
     $set = [];

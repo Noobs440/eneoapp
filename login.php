@@ -55,25 +55,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </head>
     <body>
         <?php include 'navbar.php'; ?>
-        <div class="login-container">
-            <div class="connexion">Connexion</div>
-            <form action="login.php" method="post">
-                <p class="text-1">N° de telephone</p>
-                <input type="number" name="numero_telephone" placeholder="N° de telephone" required>
-                <p class="text-1">Mot de passe</p>
-                <input type="password" name="password" placeholder="Mot de passe" required>
+        <div class="login-wrapper">
+            <div class="login-container">
+                <div class="connexion">Connexion</div>
+                <form action="login.php" method="post">
+                    <p class="text-1">N° de telephone</p>
+                    <input type="number" name="numero_telephone" placeholder="N° de telephone" required>
+                    <p class="text-1">Mot de passe</p>
+                    <input type="password" name="password" placeholder="Mot de passe" required>
 
-                <button type="submit">Se connecter</button><br><br>
-                 <?php if (!empty($message)): ?>
-                <div class="error-message"><?php echo htmlspecialchars($message); ?></div>
-                <?php endif; ?><br>
-                <p class="forgot">
-                    <a href="#">Mot de passe oublié ?</a>
-                </p>
-                <p class="signup">
-                    Pas encore de compte ? <a href="register.php">S'inscrire</a>
-                </p>
-            </form>
+                    <button type="submit">Se connecter</button><br><br>
+                     <?php if (!empty($message)): ?>
+                    <div class="error-message"><?php echo htmlspecialchars($message); ?></div>
+                    <?php endif; ?><br>
+                    <p class="forgot">
+                        <a href="#">Mot de passe oublié ?</a>
+                    </p>
+                    <p class="signup">
+                        Pas encore de compte ? <a href="register.php">S'inscrire</a>
+                    </p>
+                </form>
+            </div>
+            <div class="login-video">
+                <video width="400" height="500" controls>
+                    <source src="eneo_spot.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la balise vidéo.
+                </video>
+            </div>
         </div>
     </body>
 </html>

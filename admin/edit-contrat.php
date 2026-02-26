@@ -24,7 +24,7 @@ $fields = [
     "num_contrat" => [
         "label" => "N° de contrat",
         "type" => "text",
-        "readonly"=>true
+        "readonly" => true,
     ],
     "nom_abonne" => [
         "label" => "Nom de l'abonné",
@@ -37,6 +37,8 @@ $fields = [
 ];
 
 $values = $user;
+// Provide original id to the form-template so save handler can detect original num_contrat
+$id = $num_contrat;
 ?>
 
 <!DOCTYPE html>

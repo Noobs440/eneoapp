@@ -20,25 +20,42 @@ function generateUniqueContractNumber($pdo) {
 $table = "contrat";
 
 $data = $_POST;
-$id = $data['num_contrat'] ?? null;
+// Determine if this is an update (original id passed as 'id') or an insert
+$original = $data['id'] ?? null;
 
-if ($id) {
+if ($original) {
+    // Updating an existing contract. $data contains fields including possibly a new num_contrat.
+    $newNum = $data['num_contrat'] ?? $original;
 
-    unset($data['num_contrat']);
-
+    // Build SET clause from posted fields (including num_contrat if present)
     $set = [];
+    $params = [];
     foreach ($data as $key => $value) {
+        if ($key === 'id') continue; // original id
         $set[] = "$key = :$key";
+        $params[$key] = $value;
     }
 
-    $sql = "UPDATE $table 
-            SET " . implode(", ", $set) . " 
-            WHERE num_contrat = :id";
+    // Execute inside a transaction so updates to contrat and user stay consistent
+    try {
+        $pdo->beginTransaction();
 
-    $data['id'] = $id;
+        $sql = "UPDATE $table SET " . implode(", ", $set) . " WHERE num_contrat = :original";
+        $params['original'] = $original;
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute($params);
 
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute($data);
+        // If contract number changed, propagate to user table
+        if ($newNum !== $original) {
+            $stmtUser = $pdo->prepare('UPDATE user SET num_contrat = :new WHERE num_contrat = :original');
+            $stmtUser->execute(['new' => $newNum, 'original' => $original]);
+        }
+
+        $pdo->commit();
+    } catch (Exception $e) {
+        if ($pdo->inTransaction()) $pdo->rollBack();
+        error_log('Error updating contract: ' . $e->getMessage());
+    }
 
 } else {
 

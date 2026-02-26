@@ -6,7 +6,7 @@ injectIntoGlobalHook(window);
 window.$RefreshReg$ = () => {};
 window.$RefreshSig$ = () => (type) => type;</script>
 
-    <script type="module" src="./eneo-factures-admin_files/client"></script>
+    <script type="module" src="./eneo-factures-admin_files/abonne"></script>
 
     
     <link rel="icon" type="image/svg+xml" href="http://localhost:5173/vite.svg">

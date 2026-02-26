@@ -38,6 +38,7 @@ if (file_exists($dbPath)) {
         </div>
     </div>
     <ul class="menu">
+        <li><a href="dashboard.php">Tableau de bord</a></li>
         <li><a href="users.php">Gestion des utilisateurs</a></li>
         <li><a href="factures.php">Gestion des factures</a></li>
         <li><a href="paiements.php">Gestion des paiements</a></li>

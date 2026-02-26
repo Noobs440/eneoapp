@@ -24,6 +24,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 <html>
 <head>
+    <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="indexDashboardUser.css">
     <link rel="stylesheet" href="factures.css">
 </head>

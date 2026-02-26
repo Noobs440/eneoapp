@@ -40,6 +40,11 @@ $fields = [
 ];
 
 $values = $user;
+$form_error = '';
+if (!empty($_SESSION['consommation_error'])) {
+    $form_error = $_SESSION['consommation_error'];
+    unset($_SESSION['consommation_error']);
+}
 ?>
 
 <!DOCTYPE html>

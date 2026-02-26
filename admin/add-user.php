@@ -15,14 +15,16 @@ $fields = [
     ],
     "num_contrat" => [
         "label" => "N° de contrat",
-        "type" => "text"
+        "type" => "text",
+        "readonly" => true,
+        "required" => false
     ],
     "role" => [
         "label" => "Rôle",
         "type" => "select",
         "options" => [
             "admin" => "Admin",
-            "client" => "Client"
+            "abonne" => "abonne"
         ]
     ],
     "password" => [
@@ -32,6 +34,11 @@ $fields = [
 ];
 
 $values = [];
+
+// Prefill num_contrat when provided via GET (e.g. from contrats table)
+if (isset($_GET['num_contrat'])) {
+    $values['num_contrat'] = $_GET['num_contrat'];
+}
 ?>
 
 <!DOCTYPE html>

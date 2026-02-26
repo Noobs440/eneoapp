@@ -5,13 +5,36 @@ $editLink = "edit-facture.php";
 $deleteLink = "delete-facture.php";
 $primaryKey = "num_facture";
 
-$columns = ["N° de facture", "N° de contrat", "Mois", "Consommation", "Montant", "Statut", "Date limite de paiement"];
+$columns = ["ID","N° de facture", "N° de contrat", "Mois", "Consommation", "Montant", "Statut", "Date limite de paiement"];
 
 include '../db.php';
 
-$sql = "SELECT * FROM facture";
-$stmt = $pdo->query($sql);
+$search = $_GET['search'] ?? "";
+
+$limit = 5;
+$page = $_GET['page'] ?? 1;
+$offset = ($page - 1) * $limit;
+
+$sql = "SELECT * FROM factures 
+        WHERE num_facture LIKE :search OR num_contrat LIKE :search
+        LIMIT :limit OFFSET :offset";
+
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(':search', "%$search%", PDO::PARAM_STR);
+$stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+$stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+$stmt->execute();
+
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$countSql = "SELECT COUNT(*) FROM factures 
+             WHERE num_facture LIKE :search OR num_contrat LIKE :search";
+
+$countStmt = $pdo->prepare($countSql);
+$countStmt->bindValue(':search', "%$search%", PDO::PARAM_STR);
+$countStmt->execute();
+$totalRows = $countStmt->fetchColumn();
+
+$totalPages = ceil($totalRows / $limit);
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +47,28 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
 
 <?php include 'sidebar.php'; ?>
+
+    <form method="GET" class="search-bar">
+        <input 
+            type="text" 
+            name="search" 
+            placeholder="Rechercher par facture ou contrat..."
+            value="<?php echo htmlspecialchars($search); ?>"
+        >
+        <button type="submit">Rechercher</button>
+    </form>
+
 <?php include 'table-template.php'; ?>
+
+    <div class="pagination">
+        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+            <a 
+                href="?page=<?php echo $i; ?>&search=<?php echo urlencode($search); ?>"
+                class="<?php if ($i == $page) echo 'active'; ?>">
+                <?php echo $i; ?>
+            </a>
+        <?php endfor; ?>
+    </div>
 
 </body>
 </html>

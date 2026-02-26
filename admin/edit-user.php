@@ -35,14 +35,16 @@ $fields = [
     ],
         "num_contrat" => [
             "label" => "N° de contrat",
-            "type" => "text"
+            "type" => "text",
+            "readonly" => true,
+            "required" => false
         ],
     "role" => [
         "label" => "Rôle",
         "type" => "select",
         "options" => [
             "admin" => "Admin",
-            "client" => "Client"
+            "abonne" => "abonne"
         ]
     ]
 ];

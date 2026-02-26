@@ -10,7 +10,7 @@ $num_contrat = $user['num_contrat'];
 $stmt = $pdo->prepare("
     SELECT mois, montant, statut, date_limite,
            consommation, num_facture
-    FROM facture
+    FROM factures
     WHERE num_contrat = ?
     AND statut = 'Impayé'
     ORDER BY date_limite ASC
