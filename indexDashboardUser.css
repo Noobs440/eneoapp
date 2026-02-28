@@ -3,23 +3,54 @@ body{
 }
 .description_user{
     width: 100%;
-    padding: 25px;
-    color: blue;
-    border-radius: 12px;
+    padding: 30px 40px;
+    color: white;
+    background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
     font-size: 30px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+    letter-spacing: 0.5px;
 }
+
+.description_user > div {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.description_user strong {
+    font-weight: 700;
+    font-size: 32px;
+    text-transform: capitalize;
+}
+
 .description_user .logout{
-    margin-top: -20px;
-    margin-left: 90%;
-    color: blue;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 6px;
+    padding: 12px 28px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 2px solid white;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s ease;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.description_user .logout:hover {
+    background-color: white;
+    color: #0066cc;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 .cards-container {
+    margin-top: 20px;
     width: 65%;
     display: flex;
     gap: 20px;

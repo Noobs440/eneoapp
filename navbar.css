@@ -1,6 +1,27 @@
+/* Reset margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
 .navbar_header{
     width: 100%;
     height: auto;
+    background-color: white;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar_header .logo{
@@ -18,6 +39,7 @@
 .navbar_header .logo .right{
     font-family: 'Times New Roman', Times, serif;
     text-align: right;
+    margin-top: -50px;
 }
 
 .navbar_header .menu{

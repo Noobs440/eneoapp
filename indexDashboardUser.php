@@ -70,20 +70,24 @@ function loadContent(page) {
         .then(response => response.text())
         .then(data => {
             document.getElementById("content").innerHTML = data;
+            document.getElementById("content").querySelectorAll("script").forEach(function(oldScript) {
+                const newScript = document.createElement("script");
+                newScript.textContent = oldScript.textContent;
+                document.body.appendChild(newScript);
+            });
         })
         .catch(error => {
-            document.getElementById("content").innerHTML = 
-                "Erreur de chargement";
+            document.getElementById("content").innerHTML = "Erreur de chargement";
         });
 }
 </script>
 <body>
 
 <div class="description_user">
-    <div>Bienvenue
-    <strong></strong> <?= htmlspecialchars($user['nom_abonne']) ?>
-    <strong></div>
-
+    <div>
+        <span>Bienvenue</span>
+        <strong><?= htmlspecialchars($user['nom_abonne']) ?></strong>
+    </div>
     <a href="logout.php" class="logout">Déconnexion</a>
 </div>
 
@@ -136,6 +140,72 @@ function loadContent(page) {
     <a href="#" onclick="loadContent('releves.php')">Relèves</a>
 </div>
     <div id="content"></div>
+
+<!-- MODAL dans indexDashboardUser.php -->
+<div id="modal-facture" class="modal-overlay" style="display:none;">
+    <div class="modal-content">
+        <button class="modal-close" onclick="fermerModal()">✕</button>
+
+        <div class="facture-header">
+            <div class="facture-logo">
+                <img src="eneo_logo.png" alt="ENEO" width="80">
+                <h2>ENEO Cameroun</h2>
+            </div>
+            <div class="facture-ref">
+                <h3 id="m-num-facture"></h3>
+                <p>Date limite : <strong id="m-date-limite"></strong></p>
+                <p>Statut : <strong id="m-statut"></strong></p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="facture-abonne">
+            <p><strong>Abonné :</strong> <span id="m-nom"></span></p>
+            <p><strong>N° Contrat :</strong> <span id="m-contrat"></span></p>
+            <p><strong>Quartier :</strong> <span id="m-quartier"></span></p>
+            <p><strong>Période :</strong> <span id="m-mois"></span></p>
+        </div>
+
+        <hr>
+
+        <table class="facture-detail-table">
+            <tr>
+                <th>Désignation</th>
+                <th>Valeur</th>
+            </tr>
+            <tr>
+                <td>Consommation</td>
+                <td><span id="m-conso"></span> kWh</td>
+            </tr>
+            <tr>
+                <td>Prix unitaire</td>
+                <td>100 FCFA/kWh</td>
+            </tr>
+            <tr class="total-row">
+                <td><strong>Montant TTC</strong></td>
+                <td><strong><span id="m-montant"></span> FCFA</strong></td>
+            </tr>
+        </table>
+
+        <div class="facture-footer">
+            <p>Merci de régler votre facture avant la date limite.</p>
+            <button onclick="window.print()" class="btn-print">🖨️ Imprimer</button>
+        </div>
+    </div>
+</div>
+
+<script>
+function fermerModal() {
+    document.getElementById('modal-facture').style.display = 'none';
+}
+
+document.getElementById('modal-facture').addEventListener('click', function(e) {
+    if (e.target === this) fermerModal();
+});
+</script>
+
+</body>
 
 </body>
 </html>

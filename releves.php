@@ -7,14 +7,32 @@ $stmtUser->execute([$_SESSION['user_id']]);
 $user = $stmtUser->fetch(PDO::FETCH_ASSOC);
 
 $num_contrat = $user['num_contrat'];
+
+// Combine consommation, releve, and factures
 $stmt = $pdo->prepare("
-    SELECT mois, conso_precedente, conso, difference,
-        num_facture
-    FROM releve
-    WHERE num_contrat = ?
+    SELECT 
+        c.mois,
+        c.conso as consommation_actuelle,
+        r.conso_precedente,
+        r.difference,
+        r.num_facture,
+        f.montant,
+        f.statut,
+        f.date_limite
+    FROM consommation c
+    LEFT JOIN releve r ON c.num_contrat = r.num_contrat AND MONTH(c.mois) = MONTH(r.mois) AND YEAR(c.mois) = YEAR(r.mois)
+    LEFT JOIN factures f ON r.num_facture = f.num_facture
+    WHERE c.num_contrat = ?
+    ORDER BY c.mois DESC
 ");
 $stmt->execute([$num_contrat]);
-$impayes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$releves = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+error_log("DEBUG releves.php: num_contrat=" . $num_contrat);
+error_log("DEBUG releves.php: rows returned=" . count($releves));
+if (count($releves) > 0) {
+    error_log("DEBUG releves.php: first row=" . print_r($releves[0], true));
+}
 ?>
 
 <h2>Relevés de consommation</h2>
@@ -22,26 +40,33 @@ $impayes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <table class="facture-table" cellpadding="10">
     <tr>
         <th>Mois</th>
-        <th>Conso. Précédente</th>
-        <th>Conso. Actuelle</th>
-        <th>Difference</th>
-        <th>Facture associée</th>
+        <th>Conso. Précédente (kWh)</th>
+        <th>Conso. Actuelle (kWh)</th>
+        <th>Différence (kWh)</th>
+        <th>N° Facture</th>
+        <th>Montant FCFA</th>
+        <th>Statut</th>
+        <th>Date Limite</th>
     </tr>
 
-    <?php if (count($impayes) > 0): ?>
-        <?php foreach ($impayes as $f): ?>
+    <?php if (count($releves) > 0): ?>
+        <?php foreach ($releves as $r): ?>
         <tr>
-            <td><?= htmlspecialchars($f['mois']) ?></td>
-            <td><?= htmlspecialchars($f['conso_precedente']) ?> kWh</td>
-            <td><?= htmlspecialchars($f['conso']) ?> kWh</td>
-            <td><?= htmlspecialchars($f['difference']) ?> kWh</td>
-            <td><?= htmlspecialchars($f['num_facture']) ?></td>
-            <td><a href="#" class="payer">Payer</a></td>
+            <td><?= htmlspecialchars($r['mois']) ?></td>
+            <td><?= htmlspecialchars($r['conso_precedente'] ?? '–') ?></td>
+            <td><?= htmlspecialchars($r['consommation_actuelle'] ?? '–') ?></td>
+            <td><?= htmlspecialchars($r['difference'] ?? '–') ?></td>
+            <td><?= htmlspecialchars($r['num_facture'] ?? '–') ?></td>
+            <td><?= htmlspecialchars($r['montant'] ?? '–') ?></td>
+            <td style="color: <?= ($r['statut'] === 'impayé' || $r['statut'] === 'Impayé') ? 'red' : 'green' ?>; font-weight: bold;">
+                <?= htmlspecialchars($r['statut'] ?? '–') ?>
+            </td>
+            <td><?= htmlspecialchars($r['date_limite'] ?? '–') ?></td>
         </tr>
         <?php endforeach; ?>
     <?php else: ?>
         <tr>
-            <td colspan="7">Aucun relevé de consommation disponible</td>
+            <td colspan="8">Aucun relevé de consommation disponible</td>
         </tr>
     <?php endif; ?>
 </table>
