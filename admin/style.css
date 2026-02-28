@@ -247,3 +247,140 @@ body {
     margin-bottom: 15px;
     font-weight: 500;
 }
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 200px;
+    }
+    
+    .content,
+    .search-bar,
+    .pagination {
+        margin-left: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 80px;
+        position: fixed;
+    }
+    
+    .sidebar-top {
+        padding: 10px;
+    }
+    
+    .avatar img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .menu li a {
+        padding: 10px 5px;
+        font-size: 12px;
+        text-align: center;
+    }
+    
+    .sidebar-bottom {
+        padding: 10px;
+        font-size: 11px;
+    }
+    
+    .content,
+    .search-bar,
+    .pagination {
+        margin-left: 80px;
+        padding: 10px;
+    }
+    
+    .table-header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    
+    .data-table th,
+    .data-table td {
+        padding: 8px;
+        font-size: 12px;
+    }
+    
+    .form-container {
+        max-width: 100%;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .sidebar {
+        width: 60px;
+    }
+    
+    .sidebar-top {
+        padding: 8px;
+    }
+    
+    .avatar img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .menu li a {
+        padding: 8px 3px;
+        font-size: 10px;
+    }
+    
+    .sidebar-bottom {
+        display: none;
+    }
+    
+    .content,
+    .search-bar,
+    .pagination {
+        margin-left: 60px;
+        padding: 8px;
+    }
+    
+    .data-table {
+        font-size: 11px;
+    }
+    
+    .actions a {
+        display: block;
+        margin-bottom: 4px;
+        padding: 4px 6px;
+        font-size: 11px;
+    }
+    
+    .search-bar {
+        flex-wrap: wrap;
+    }
+    
+    .search-bar input {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    
+    .search-bar button {
+        width: 100%;
+    }
+    
+    .btn-add,
+    .btn-edit,
+    .btn-delete {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 4px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .btn-save,
+    .btn-cancel {
+        width: 100%;
+    }
+}

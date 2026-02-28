@@ -6,6 +6,7 @@
             <a href="<?php echo $addLink; ?>" class="btn-add">+ Ajouter</a>
         </div>
 
+        <div class="table-responsive">
         <table class="data-table">
             <thead>
                 <tr>
@@ -73,6 +74,7 @@
                 <?php endif; ?>
             </tbody>
         </table>
+        </div>
 
     </div>
 </div>

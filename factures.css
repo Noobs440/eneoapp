@@ -186,6 +186,67 @@
     background-color: #1256a0;
 }
 
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        max-width: 100%;
+        padding: 20px;
+    }
+    
+    .facture-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .facture-ref {
+        text-align: left;
+    }
+    
+    .facture-detail-table {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    .modal-content {
+        width: 100%;
+        padding: 15px;
+        border-radius: 0;
+        max-height: 100vh;
+    }
+    
+    .facture-table th,
+    .facture-table td {
+        padding: 8px 5px;
+        font-size: 12px;
+    }
+    
+    .facture-detail-table th,
+    .facture-detail-table td {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    
+    .payment-methods {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    
+    .payment-methods label img {
+        width: 50px;
+    }
+    
+    .facture-logo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .facture-logo img {
+        max-width: 50px;
+    }
+}
+
 @media print {
     /* hide everything by default */
     body * {

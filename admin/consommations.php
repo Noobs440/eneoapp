@@ -51,8 +51,10 @@ foreach ($factRows as $fr) {
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Consommations</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="..\/responsive.css">
 </head>
 <body>
 

@@ -34,10 +34,12 @@ foreach ($data as $row) {
     <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="consommation.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="consommation.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="responsive.css">
 </head>
-<body>
-
-<h2>Consommation mensuelle</h2>
 
 <div class="chart-container">
     <canvas id="consoChart"></canvas>

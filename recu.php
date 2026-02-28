@@ -61,8 +61,10 @@ error_log("DEBUG recu.php - Final display data: " . print_r($display, true));
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Reçu - <?= htmlspecialchars($display['num_recu']) ?></title>
     <link rel="stylesheet" href="factures.css">
+    <link rel="stylesheet" href="responsive.css">
     <style>
         .receipt { max-width:700px; margin:30px auto; background:#fff; padding:20px; border-radius:8px; }
         .receipt h2 { margin-top:0; }

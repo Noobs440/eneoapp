@@ -45,8 +45,10 @@ if (isset($_GET['num_contrat'])) {
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ajouter utilisateur</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="..\/responsive.css">
 </head>
 <body>
 

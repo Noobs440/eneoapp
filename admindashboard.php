@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <!-- saved from url=(0037)http://localhost:5173/admin/dashboard -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="responsive.css">
     <script type="module">import { injectIntoGlobalHook } from "/@react-refresh";
 injectIntoGlobalHook(window);
 window.$RefreshReg$ = () => {};

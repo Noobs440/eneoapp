@@ -59,9 +59,11 @@ $derniere = $stmt3->fetch(PDO::FETCH_ASSOC);
 
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="indexDashboardUser.css">
     <link rel="stylesheet" href="factures.css">
+    <link rel="stylesheet" href="responsive.css">
 </head>
 
 <script>

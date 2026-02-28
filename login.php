@@ -50,8 +50,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="login.css">
         <link rel="stylesheet" href="navbar.css">
+        <link rel="stylesheet" href="responsive.css">
     </head>
     <body>
         <?php include 'navbar.php'; ?>

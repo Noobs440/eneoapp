@@ -52,3 +52,43 @@ body {
     color: red;
     font-weight: bold;
 }
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .password-container {
+        width: 90%;
+        padding: 20px;
+        margin: 40px auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .password-container {
+        width: 100%;
+        margin: 15px 0;
+        padding: 15px;
+        border-radius: 0;
+    }
+    
+    .password-container h2 {
+        font-size: 20px;
+    }
+    
+    .password-container label {
+        font-size: 14px;
+    }
+    
+    .password-container input {
+        font-size: 16px;
+        padding: 10px;
+    }
+    
+    .password-container button {
+        padding: 12px;
+        font-size: 14px;
+    }
+    
+    .message {
+        font-size: 14px;
+    }
+}

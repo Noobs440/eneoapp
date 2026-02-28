@@ -56,11 +56,13 @@ $values = [];
     <meta charset="UTF-8">
     <title>Ajouter une facture</title>
     <link rel="stylesheet" href="style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ajouter paiement</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="..\/responsive.css">
 </head>
-<body>
-
-<?php include 'sidebar.php'; ?>
-<?php include 'form-template.php'; ?>
 
 </body>
 </html>

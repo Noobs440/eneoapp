@@ -27,8 +27,10 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="profil.css">
+    <link rel="stylesheet" href="responsive.css">
 </head>
 <body>
 

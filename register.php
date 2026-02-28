@@ -73,8 +73,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php include 'navbar.php'; ?>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="register.css">
         <link rel="stylesheet" href="navbar.css">
+        <link rel="stylesheet" href="responsive.css">
     </head>
     <body>
         <div class="register-wrapper">

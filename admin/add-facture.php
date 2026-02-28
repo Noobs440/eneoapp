@@ -62,6 +62,8 @@ $values = [
     <meta charset="UTF-8">
     <title>Ajouter une facture</title>
     <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="responsive.css">
 </head>
 <body>
 

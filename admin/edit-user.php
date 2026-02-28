@@ -56,8 +56,10 @@ $values = $user;
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Modifier utilisateur</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="..\/responsive.css">
 </head>
 <body>
 

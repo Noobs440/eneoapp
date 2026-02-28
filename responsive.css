@@ -1,0 +1,154 @@
+/* Responsive helpers for ENEOAPP */
+/* Mobile-first adjustments */
+html, body { -webkit-text-size-adjust: 100%; }
+img, video { max-width: 100%; height: auto; }
+
+/* Forms */
+input[type="text"], 
+input[type="email"],
+input[type="password"], 
+input[type="number"], 
+input[type="date"],
+textarea, 
+select { 
+    max-width: 100%; 
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Layout wrappers */
+.login-wrapper, 
+.register-wrapper {
+    flex-direction: column !important;
+    gap: 20px;
+}
+
+.login-container,
+.register-container {
+    max-width: 100%;
+    width: 100%;
+}
+
+.login-video,
+.register-video {
+    width: 100%;
+    max-width: 100%;
+}
+
+.login-video video,
+.register-video video {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+/* make tables scrollable on small screens */
+.table-responsive { 
+    overflow-x: auto; 
+    -webkit-overflow-scrolling: touch; 
+}
+
+/* Cards grid */
+.cards-container { 
+    display: flex; 
+    gap: 18px; 
+    flex-wrap: wrap; 
+}
+.card { 
+    flex: 1 1 220px; 
+    min-width: 180px; 
+}
+
+/* Content container */
+#content { 
+    padding: 12px; 
+}
+
+/* Modal adjustments */
+.modal-content { 
+    max-width: 100%; 
+    width: 95%; 
+    margin: 18px auto; 
+}
+
+.modal-overlay {
+    padding: 10px;
+}
+
+/* Smaller typography on phones */
+@media (max-width: 600px) {
+    body { font-size: 14px; }
+    
+    input[type="text"], 
+    input[type="email"],
+    input[type="password"], 
+    input[type="number"], 
+    input[type="date"],
+    textarea, 
+    select { 
+        font-size: 16px;
+        padding: 10px;
+    }
+    
+    .description_user { 
+        padding: 10px; 
+        font-size: 13px; 
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .logout {
+        align-self: flex-start;
+    }
+    
+    .card-value { 
+        font-size: 18px; 
+    }
+    
+    .card {
+        flex: 1 1 100%;
+    }
+    
+    h1, h2 { font-size: 18px; }
+    h3 { font-size: 16px; }
+    
+    .user-menu {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .user-menu a {
+        width: 100%;
+        padding: 12px;
+        text-align: center;
+    }
+    
+    button {
+        padding: 10px 16px;
+        font-size: 14px;
+        width: 100%;
+    }
+    
+    table {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 420px) {
+    .modal-content {
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+    }
+    
+    .cards-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .facture-header {
+        flex-direction: column;
+        text-align: center;
+    }
+}

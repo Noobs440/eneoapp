@@ -11,11 +11,13 @@ $page = $_GET['page'] ?? 'dashboard';
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dashboard utilisateur</title>
     <link rel="stylesheet" href="sidebar.css">
     <link rel="stylesheet" href="dashboard_content.css">
     <link rel="stylesheet" href="factures_content.css">
     <link rel="stylesheet" href="profil_content.css">
+    <link rel="stylesheet" href="responsive.css">
 </head>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>

@@ -7,8 +7,10 @@ require 'db.php';
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Réclamations — ENEOAPP</title>
     <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="responsive.css">
     <style>
         body { background: linear-gradient(180deg,#f4f7fb,#eef4fb); font-family: Inter, Arial, sans-serif; margin:0; }
         .reclaim-wrap { min-height: 72vh; display:flex; align-items:center; justify-content:center; padding:60px 20px; }
@@ -21,8 +23,22 @@ require 'db.php';
         /* spin animation */
         @keyframes spin { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }
         .gear .g-main { animation: spin 8s linear infinite; transform-origin: 50% 50%; }
-        /* small responsive tweaks */
-        @media (max-width:600px){ .reclaim-card { padding:28px; } .title{font-size:22px;} }
+        /* responsive tweaks */
+        @media (max-width: 768px) {
+            .reclaim-wrap { padding: 40px 15px; min-height: auto; }
+            .reclaim-card { padding: 32px; }
+            .gear { width: 120px; height: 120px; }
+            .title { font-size: 22px; }
+            .lead { font-size: 14px; }
+        }
+        @media (max-width: 600px) {
+            .reclaim-wrap { padding: 20px 12px; }
+            .reclaim-card { padding: 20px; border-radius: 12px; }
+            .gear { width: 100px; height: 100px; margin-bottom: 12px; }
+            .title { font-size: 18px; margin-bottom: 6px; }
+            .lead { font-size: 13px; margin-bottom: 12px; }
+            .back { padding: 8px 14px; font-size: 14px; }
+        }
     </style>
 </head>
 <body>

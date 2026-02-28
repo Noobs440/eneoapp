@@ -46,3 +46,39 @@ body {
 .profil-container button:hover {
     background-color: #0056b3;
 }
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .profil-container {
+        width: 90%;
+        padding: 20px;
+        margin: 30px auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .profil-container {
+        width: 100%;
+        margin: 15px 0;
+        padding: 15px;
+        border-radius: 0;
+    }
+    
+    .profil-container h2 {
+        font-size: 20px;
+    }
+    
+    .profil-container label {
+        font-size: 14px;
+    }
+    
+    .profil-container input {
+        font-size: 16px;
+        padding: 10px;
+    }
+    
+    .profil-container button {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
