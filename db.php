@@ -1,8 +1,8 @@
 <?php
-$host = "localhost";
-$dbname = "eneoappdb";
-$user = "root";
-$pass = "";
+$host = "sql302.infinityfree.com";
+$dbname = "if0_41345441_eneoappdb";
+$user = "if0_41345441";
+$pass = "ZDlX2giMTJ";
 
 try {
     $pdo = new PDO(
