@@ -85,7 +85,14 @@ $factures = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php endforeach; ?>
 </table>
 
+<?php
+// payment endpoint set in PHP so it can change when you turn off the sandbox flag
+$paymentEndpoint = 'save-paiement.php';
+?>
 <script>
+// expose endpoint to JavaScript
+var paymentEndpoint = <?= json_encode($paymentEndpoint) ?>;
+
 document.querySelectorAll('.voir-facture').forEach(function(btn) {
     btn.addEventListener('click', function(e) {
         e.preventDefault();
@@ -166,9 +173,9 @@ document.querySelectorAll('.payer').forEach(function(btn) {
 
             // simulate network/OTP delay
             setTimeout(function(){
-                // call server to save simulated paiement
+                // call server to process paiement (sandbox or real depending on config)
                 var mode = document.querySelector('input[name=p-mode]:checked').value;
-                fetch('save-paiement-sim.php', {
+                fetch(paymentEndpoint, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
